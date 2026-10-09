@@ -1,0 +1,32 @@
+<!doctype html><html lang="es" data-bs-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Clase 2 · Instalación y print()</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../assets/css/estilo.css" rel="stylesheet"></head>
+<body class="t2" data-n="2" style="--acc:#4ade80">
+<!-- 🕵️ ¿Mirando el código fuente? Pista de la clase 2: prueba «hola mundo» en la mini terminal. Y en toda la guía hay una serpiente: escribe «serpiente». -->
+<canvas id="stars" aria-hidden="true"></canvas><div id="pg"></div>
+<nav class="navbar fixed-top"><div class="container"><a class="navbar-brand" href="../index.html">◎ Misión Python</a><span class="rango" id="rango"></span></div></nav>
+<header class="container hero"><div class="big">02</div><h1>Instalación y print()</h1><p class="lead">Instala las herramientas y escribe tus primeras líneas. Sigue los pasos en el orden de la clase.</p></header>
+<main class="container sec">
+<section class="rv"><h2>Paso 1 · El intérprete</h2><p>El computador solo entiende ceros y unos. El <b>intérprete de Python</b> es el traductor: lee tu código línea por línea y lo ejecuta al momento. Sin él, un archivo <code>.py</code> es solo texto.</p><ol class="ls"><li>Entra a <b>python.org/downloads</b> y descarga la versión que usa el curso, Python 3.13.13 (es la que se lleva bien con Manim, de la clase 9).</li><li>Al instalar en Windows, marca la casilla <b>Add python.exe to PATH</b>. Sin ella, la consola no reconoce el comando <code>python</code>.</li><li>Abre CMD o PowerShell y comprueba la instalación:</li></ol><div class="win" data-f="terminal" data-o="Python 3.13.13"><pre><code>python --version</code></pre></div></section>
+<section class="rv"><h2>Paso 2 · El editor: VS Code</h2><p>Visual Studio Code es un editor gratuito de Microsoft: el cuaderno donde escribes el código. Instálale la extensión <b>Python</b> de Microsoft, que agrega colores, detección de errores y el botón <b>Run</b>. Guarda siempre con <b>Ctrl + S</b> antes de ejecutar. Puedes ejecutar el archivo con Run o escribiendo <code>python nombre_del_archivo.py</code> en la terminal.</p></section>
+<section class="rv"><h2>Paso 3 · print()</h2><p><code>print()</code> muestra información en pantalla. Si le pasas varios valores separados por comas, los une con un espacio, aunque mezcles texto y números. También puede calcular: suma, resta, multiplicación (<code>*</code>) y división (<code>/</code>).</p><div class="win" data-f="clase_2/ejercicio_1.py" data-o="Hola Mundo Python 5&#10;7&#10;3&#10;10&#10;2.5"><pre><code># para guardar el progreso pulso los botones ctrl + s
+print("Hola","Mundo","Python",5)
+print(5+2)
+print(5-2)
+print(5*2)
+print(5/2)</code></pre></div><p class="mt-3">Ese espacio entre valores se puede cambiar con <code>sep</code>:</p><div class="win" data-f="sep.py" data-o="2026-06-19"><pre><code>print("2026", "06", "19", sep="-")</code></pre></div><p class="note mt-3">Prueba tú: cambia los números y los textos. ¿Qué devuelve <code>5/2</code>: 2 o 2.5?</p></section>
+<section class="rv"><h2>Paso 4 · Operar con texto y números</h2><p>Dentro de <code>print</code>, <code>5+5</code> se calcula, pero lo que va entre comillas es texto. Multiplicar un texto por un número lo repite.</p><div class="win" data-f="clase_2/ejercicio_2.py" data-o="10&#10;aaaaa"><pre><code>print(5+5)
+print("a"*5)</code></pre></div><p class="note mt-3">Prueba tú: prueba <code>print("2+2")</code> con comillas y sin ellas.</p></section>
+<section class="rv"><h2>Paso 5 · Caracteres de escape y end</h2><span class="egg" title="">✦</span><p>La barra invertida <code>\</code> (en Windows, Alt + 92) es el <b>carácter de escape</b>: le dice a Python que el siguiente símbolo es especial. <code>\n</code> salta de línea, <code>\"</code> y <code>\'</code> permiten escribir comillas dentro de un texto. Por defecto <code>print</code> termina con un salto de línea, y <code>end="---"</code> lo reemplaza. En tu <code>ejercicio_3.py</code> estas líneas están comentadas con <code>#</code> para probarlas una a una.</p><div class="win" data-f="ejercicio_3.py (líneas probadas)" data-o="Bienvenidos al curso de python---Mi nombre es David Torrez&#10;Bienvenidos al &#10;curso de python&#10;Bienvenidos al curso de &quot;python&quot;&#10;I&#x27;m David Torrez"><pre><code>print("Bienvenidos","al","curso","de","python",end="---")
+print("Mi nombre es","David Torrez")
+print("Bienvenidos al \ncurso de python")
+print("Bienvenidos al curso de \"python\"")
+print("I\'m David Torrez")</code></pre></div><p class="note mt-3">Prueba tú: cambia el <code>end</code> por otro símbolo.</p></section>
+<section class="rv"><h2>Paso 6 · Tu turno: la terminal</h2><p>Escribe <code>print("hola")</code> o <code>print(2+2)</code> y pulsa Enter. Prueba también <code>Print("hola")</code> con mayúscula.</p><div class="win" id="tm"><div class="bar"><i></i><i></i><i></i><span>mini terminal</span></div><pre id="to">Escribe un comando print(...)
+</pre><div class="tin">&gt;&gt;&gt; <input id="ti" class="mi" aria-label="Comando" autocomplete="off"></div></div></section>
+<section class="rv"><h2>Practica</h2><details class="dp"><summary>Una línea con tu nombre y tu edad</summary><div class="win" data-f="ej_presentacion.py" data-o="Mi nombre es Ana y tengo 20 años"><pre><code>print("Mi nombre es", "Ana", "y tengo", 20, "años")</code></pre></div></details></section>
+<section class="rv"><h2>Resumen</h2><ul class="ls"><li>El intérprete traduce y ejecuta tu código; VS Code es donde lo escribes.</li><li><code>print()</code> acepta varios valores, calcula y se ajusta con <code>sep</code> y <code>end</code>.</li><li>La barra invertida permite saltos de línea y comillas dentro del texto.</li><li>Python distingue mayúsculas: <code>Print</code> no es <code>print</code>.</li></ul></section>
+<nav class="nx"><a href="clase_1.html">← Clase 1</a><a href="../index.html">Mapa</a><a href="clase_3.html">Clase 3 →</a></nav>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><script src="../assets/js/app.js"></script></body></html>
