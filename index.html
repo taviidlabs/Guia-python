@@ -1,0 +1,31 @@
+<!doctype html><html lang="es" data-bs-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Misión Python · Curso interactivo</title><meta name="description" content="Curso de Python en 9 clases, convertido en un viaje interactivo.">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;700&family=Syne:wght@800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/css/estilo.css" rel="stylesheet"></head>
+<body><canvas id="stars" aria-hidden="true"></canvas>
+<svg width="0" height="0" aria-hidden="true"><filter id="nb"><feTurbulence baseFrequency=".008 .02" numOctaves="4" seed="3"/><feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.6 -.5"/></filter></svg>
+<nav class="navbar fixed-top"><div class="container"><a class="navbar-brand" href="#">◎ Misión Python</a><span class="rango" id="rango"></span></div></nav>
+<header class="hero2"><div class="earth"><div class="cl"></div></div>
+<svg class="sat" viewBox="0 0 300 140" aria-hidden="true"><defs><pattern id="g" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#7fa6ff" stroke-width=".6"/></pattern></defs><rect x="0" y="30" width="105" height="70" fill="#1b2f66"/><rect x="0" y="30" width="105" height="70" fill="url(#g)"/><rect x="195" y="30" width="105" height="70" fill="#1b2f66"/><rect x="195" y="30" width="105" height="70" fill="url(#g)"/><rect x="105" y="62" width="90" height="6" fill="#8b97b8"/><rect x="118" y="38" width="64" height="54" rx="6" fill="#c9d3ea"/><rect x="128" y="48" width="18" height="34" fill="#2a3558"/><rect x="152" y="48" width="18" height="34" fill="#2a3558"/><circle cx="150" cy="24" r="6" fill="#ffd479"/></svg>
+<canvas id="con" aria-hidden="true"></canvas><p class="top">TOCA UNA ESTRELLA O DESLIZA ↓</p>
+<div class="container pos"><h1>Python en 9 clases</h1><p class="cap">Aprende paso a paso, sin prisa: del primer print() a una app con base de datos. Cada clase es un planeta nuevo en tu viaje.</p><a href="#mapa" class="btn btn-lg btn-nova">Iniciar misión</a></div></header>
+<section class="container stats"><div><b data-c="9">0</b>clases</div><div><b data-c="4">0</b>fuentes de datos: API, Excel, JSON y SQLite</div><div><b data-c="1">0</b>proyecto final: un dashboard de minimarket</div></section>
+<section class="container"><h2>Lo que vas a construir</h2><p class="lead">Mira cómo el mismo proyecto crece de una clase a la siguiente.</p>
+<div class="win" id="dm"><div class="bar"><i></i><i></i><i></i><span id="dt"></span></div><div id="dv" class="dv"></div></div><div class="cr"><button id="pv" aria-label="Clase anterior">←</button><div id="dots"></div><button id="nx2" aria-label="Clase siguiente">→</button></div><p class="hint">Usa las flechas, toca un número o desliza con el dedo</p></section>
+<main class="container" id="mapa"><h2>Mapa de la misión</h2><div class="ruta" id="ruta"></div></main>
+<section class="container"><h2>Antes de empezar</h2><div class="accordion" id="fq">
+<div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#a1">¿Qué necesito instalar?</button></h3><div id="a1" class="accordion-collapse collapse" data-bs-parent="#fq"><div class="accordion-body">Python 3.13 (marca «Add python.exe to PATH» al instalar) y Visual Studio Code con la extensión de Python. La clase 2 lo explica paso a paso.</div></div></div>
+<div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#a2">¿Necesito experiencia previa?</button></h3><div id="a2" class="accordion-collapse collapse" data-bs-parent="#fq"><div class="accordion-body">No. El curso parte desde cero, con <code>print()</code>, y cada clase construye sobre la anterior.</div></div></div>
+<div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#a3">¿Cómo ejecuto un archivo?</button></h3><div id="a3" class="accordion-collapse collapse" data-bs-parent="#fq"><div class="accordion-body">Abre la terminal de VS Code y escribe <code>python nombre_del_archivo.py</code>, o usa el botón Run.</div></div></div></div></section>
+<section class="container"><h2>Sobre el autor</h2><div class="row g-4 align-items-center"><div class="col-lg-5"><p class="lead">Deyvid Torrez · CESBOL Ingeniería. Python, Flutter e inteligencia artificial.</p></div><div class="col-lg-7"><div class="win"><div class="bar"><i></i><i></i><i></i><span>taviid.py</span><button class="rp" title="Repetir">↻</button><button class="cp" title="Copiar">⧉</button></div><pre><code data-type>class Taviid:
+    def __init__(self):
+        self.stack = ['Python', 'Flutter', 'IA']
+        self.curiosidad = True
+
+    def resolver(self, problema):
+        return 'la mejor de varias formas'
+
+dev = Taviid()
+print('codigo activado')</code></pre></div></div></div></section>
+<footer class="container">Hecho por Deyvid Torrez · CESBOL Ingeniería</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><script src="assets/js/app.js"></script></body></html>

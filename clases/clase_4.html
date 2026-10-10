@@ -1,0 +1,132 @@
+<!doctype html><html lang="es" data-bs-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Clase 4 · Decisiones, bucles y funciones</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;700&family=Syne:wght@800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../assets/css/estilo.css" rel="stylesheet"></head>
+<body class="t4" data-n="4" style="--acc:#a78bfa">
+<!-- 🕵️ ¿Mirando el código fuente? Pista de la clase 4: todo bucle necesita break. Y en toda la guía hay una serpiente: escribe «serpiente». --><canvas id="stars" aria-hidden="true"></canvas><div id="pg"></div>
+<nav class="navbar fixed-top"><div class="container"><a class="navbar-brand" href="../index.html">◎ Misión Python</a><span class="rango" id="rango"></span></div></nav>
+<header class="container hero"><div class="big">04</div><h1>Decisiones, bucles y funciones</h1><p class="lead">Aquí el programa empieza a pensar: decide, repite y se organiza en funciones. Sigue los pasos en el mismo orden de la clase.</p></header>
+<main class="container sec">
+<section class="rv"><h2>Paso 1 · Decidir con if y else</h2><p>Un programa a veces tiene que decidir. <code>if</code> hace una pregunta: si la respuesta es verdadera ejecuta su bloque, y si no, ejecuta el de <code>else</code>. Para preguntar se usan los operadores de comparación: <code>==</code> igual, <code>!=</code> diferente, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code> y <code>&lt;=</code>.</p><p><b>Ojo:</b> <code>=</code> guarda un valor en una variable (asignación) y <code>==</code> compara dos valores. Son cosas distintas. Los dos puntos y la sangría de 4 espacios marcan qué líneas pertenecen a cada bloque. <code>int()</code> convierte en número lo que se escribe con <code>input</code>, como vimos en la clase 3.</p><div class="win" data-f="clase_4/e_control.py" data-o="Condicionales&#10;introducir edad: 20&#10;Mayor de edad"><pre><code># = ---------&gt; es asignacion
+# 2==2 --------&gt; comparacion
+# != ----------&gt; diferente
+# &gt;, &lt;, &gt;=, &lt;=
+
+print("Condicionales")
+
+#if condicion:
+#    instrucciones
+#else:
+#    instrucciones
+
+edad=int(input("introducir edad: "))
+
+if edad&gt;=18:
+    print("Mayor de edad")
+else:
+    print("menor de edad")</code></pre></div><p class="note mt-3">Prueba tú: cambia la edad a 18 y luego a 17, y mira qué pasa justo en el límite.</p></section>
+<section class="rv"><h2>Paso 2 · Ejercicio: la contraseña</h2><p>El mismo <code>if/else</code> funciona con texto. Aquí se compara lo que escribe el usuario con la clave guardada: <code>intento == clave</code>. Python distingue mayúsculas de minúsculas, así que <code>Python</code> y <code>python</code> son textos distintos.</p><div class="win" data-f="clase_4/condicional.py" data-o="ingrese la contraseña: python&#10;Acceso concedido&#10;&#10;$ python condicional.py&#10;ingrese la contraseña: Python&#10;Clave incorrecta"><pre><code>clave="python"
+intento=input("ingrese la contraseña: ")
+
+if intento==clave:
+    print("Acceso concedido")
+else:
+    print("Clave incorrecta")</code></pre></div><p class="note mt-3">Prueba tú: cambia la clave guardada y comprueba que la comparación sigue funcionando.</p></section>
+<section class="rv"><h2>Paso 3 · Anidación: un if dentro de otro</h2><p>Cuando hay más de dos caminos, puedes poner un <code>if</code> dentro del <code>else</code> de otro. Eso se llama anidación. Python entra al <code>if</code> de afuera y, si no se cumple, baja al <code>else</code> y revisa el siguiente.</p><p>Con nota 55: no es mayor que 90, no es mayor que 60 y sí es mayor que 50, así que imprime «Refuerzo». Fíjate en el borde: con exactamente 90, <code>nota &gt; 90</code> es falso, y el programa imprime «Aprobado». Y cada nivel empuja el código más a la derecha.</p><div class="win" data-f="clase_4/notas.py" data-o="Introducir nota: 55&#10;Refuerzo"><pre><code>nota=int(input("Introducir nota: "))
+
+if nota&gt;90:
+    print("Excelencia")
+else:
+    if nota&gt;60:
+        print("Aprobado")
+    else:
+        if nota&gt;50:
+            print("Refuerzo")
+        else:
+            print("Reprobado")</code></pre></div><p class="note mt-3">Prueba tú: escribe 90 y 91, y comprueba la diferencia.</p></section>
+<section class="rv"><h2>Paso 4 · elif: lo mismo, más ordenado</h2><span class="egg" title="">✦</span><p><code>elif</code> (else + if) hace lo mismo que la anidación sin hundir el código: se revisan las condiciones de arriba abajo y se ejecuta solo el primer bloque verdadero. El resultado es idéntico al del paso anterior, pero se lee mucho mejor.</p><div class="win" data-f="clase_4/notas2.py" data-o="Introducir nota: 55&#10;Refuerzo"><pre><code>nota=int(input("Introducir nota: "))
+
+if nota&gt;90:
+    print("Excelencia")
+elif nota&gt;60:
+    print("Aprobado")
+elif nota&gt;50:
+    print("Refuerzo")
+else:
+    print("Reprobado")</code></pre></div><p class="note mt-3">Prueba tú: ¿qué tendrías que cambiar para que el 90 cuente como «Excelencia»?</p></section>
+<section class="rv"><h2>Paso 5 · for y range</h2><p>Un bucle repite instrucciones. <code>for</code> recorre una secuencia, y <code>range(inicio, fin, salto)</code> fabrica los números: empieza en 2, avanza de 2 en 2 y se detiene antes de llegar a 20, porque el valor final nunca se incluye.</p><div class="win" data-f="clase_4/bucle_for.py" data-o="2&#10;4&#10;6&#10;8&#10;10&#10;12&#10;14&#10;16&#10;18"><pre><code>#for variable in range(inicio,fin,saltos):
+#    instrucciones
+
+for i in range(2,20,2):
+    print(i)</code></pre></div><p class="note mt-3">Prueba tú: prueba <code>range(1, 6)</code> y <code>range(10, 0, -2)</code>.</p></section>
+<section class="rv"><h2>Paso 6 · for sobre un texto</h2><p>El <code>for</code> también recorre un texto letra por letra. <code>contador</code> empieza en 0 y sube 1 cada vez que la letra es «a». Al terminar, <code>print</code> muestra el total. La <code>f</code> antes de las comillas (f-string) permite meter variables entre llaves.</p><div class="win" data-f="clase_4/for2.py" data-o="La palabra aaaalaaalaa tiene 9 letras &#x27;a&#x27;"><pre><code>palabra="aaaalaaalaa"
+contador=0
+for letra in palabra:
+    if letra=="a":
+        contador=contador+1
+print(f"La palabra {palabra} tiene {contador} letras 'a'")</code></pre></div><p class="note mt-3">Prueba tú: cambia la palabra y comprueba que el conteo coincide con el tuyo.</p></section>
+<section class="rv"><h2>Paso 7 · while: repetir mientras se cumpla algo</h2><p><code>while</code> repite mientras su condición sea verdadera. Aquí <code>i</code> empieza en 1 y, mientras <code>i &lt;= 5</code>, imprime y suma 1 (<code>i += 1</code> equivale a <code>i = i + 1</code>). Si esa línea faltara, la condición nunca cambiaría y el bucle no terminaría.</p><div class="win" data-f="clase_4/while1.py" data-o="1&#10;2&#10;3&#10;4&#10;5"><pre><code>#while condicion:
+#    instrucciones
+
+i=1
+while i&lt;=5:
+    print(i)
+    i+=1</code></pre></div><p class="note mt-3">Prueba tú: cambia el 5 por otro número.</p></section>
+<section class="rv"><h2>Paso 8 · while con la respuesta del usuario</h2><p>Ahora el bucle depende de lo que responda el usuario: se repite mientras <code>respuesta == "si"</code>. Dentro del bucle se vuelve a preguntar. Cuando escribe otra cosa, la condición es falsa, sale del bucle y se ejecuta la última línea.</p><div class="win" data-f="clase_4/while2.py" data-o="El programa sigue...&#10;Quieres otra vuelta? (si/no): no&#10;si&#10;si&#10;El programa sigue...&#10;Quieres otra vuelta? (si/no): El programa sigue...&#10;Quieres otra vuelta? (si/no): El programa se cerro"><pre><code>respuesta="si"
+while respuesta=="si":
+    print("El programa sigue...")
+    respuesta=input("Quieres otra vuelta? (si/no): ")
+print("El programa se cerro")</code></pre></div><p class="note mt-3">Prueba tú: responde «SI» en mayúsculas y observa qué pasa.</p></section>
+<section class="rv"><h2>Paso 9 · Funciones: bloques con nombre</h2><p>Una función es un bloque de código con nombre que puedes reutilizar. Se define con <code>def nombre(parametro):</code> y se ejecuta al llamarla. El parámetro toma el valor que le pases en cada llamada, por eso la misma función saluda a tres personas distintas.</p><div class="win" data-f="clase_4/funciones.py" data-o="Hola, bienvenida/o a la clase de python Naim&#10;Hola, bienvenida/o a la clase de python Andrea&#10;Hola, bienvenida/o a la clase de python Edwin"><pre><code>#def nombre(parametros):
+#    instrucciones
+
+def saludar(nombre):
+    print("Hola, bienvenida/o a la clase de python",nombre)
+
+
+
+saludar("Naim")
+saludar("Andrea")
+saludar("Edwin")</code></pre></div><p class="note mt-3">Prueba tú: agrega una cuarta llamada con tu nombre.</p></section>
+<section class="rv"><h2>Paso 10 · return: devolver un valor</h2><p>El archivo trae dos versiones. La primera, entre <code>'''</code> para que no se ejecute, imprime dentro de la función. La segunda usa <code>return</code>: la función entrega el valor y quien la llamó lo guarda en una variable. <code>print</code> solo muestra en pantalla; <code>return</code> entrega el valor para que lo uses después.</p><div class="win" data-f="clase_4/funcion2.py" data-o="5"><pre><code>'''
+def sumar (a,b):
+    print(a+b)
+
+sumar(2,3)
+sumar(6,4)
+'''
+def sumar (a,b):
+    return a+b
+
+resultado=sumar(2,3)
+print(resultado)</code></pre></div><p class="note mt-3">Prueba tú: guarda el resultado de dos llamadas y súmalos.</p></section>
+<section class="rv"><h2>Paso 11 · Devolver varios valores</h2><p>Una función puede devolver varios valores separados por comas, y al llamarla se reciben en varias variables a la vez: <code>m, n, p = analizar(datos)</code>. <code>max</code>, <code>min</code>, <code>sum</code> y <code>len</code> ya vienen con Python.</p><div class="win" data-f="clase_4/analizar.py" data-o="Mayor 15&#10;menor 5&#10;Promedio 10.0"><pre><code>def analizar(lista):
+    mayor=max(lista)
+    menor=min(lista)
+    promedio=sum(lista)/len(lista)
+    
+    return mayor,menor,promedio
+
+
+datos=[5,10,15]
+m,n,p=analizar(datos)
+
+print("Mayor", m)
+print("menor", n)
+print("Promedio",p)</code></pre></div><p class="note mt-3">Prueba tú: cambia la lista y comprueba mayor, menor y promedio a mano.</p></section>
+<section class="rv"><h2>Practica</h2><p>Solo con lo que ya vimos en esta clase.</p><details class="dp"><summary>1. La tabla del 3</summary><div class="win" data-f="ej1.py" data-o="3 x 1 = 3&#10;3 x 2 = 6&#10;3 x 3 = 9&#10;...&#10;3 x 10 = 30"><pre><code>for i in range(1, 11):
+    print("3 x", i, "=", 3 * i)</code></pre></div></details><details class="dp"><summary>2. Una función que devuelve el cuadrado</summary><div class="win" data-f="ej2.py" data-o="16"><pre><code>def cuadrado(n):
+    return n * n
+
+resultado = cuadrado(4)
+print(resultado)</code></pre></div></details><details class="dp"><summary>3. Pedir la clave hasta acertar</summary><div class="win" data-f="ej3.py" data-o="clave: python&#10;java&#10;clave: Acceso concedido"><pre><code>clave = "python"
+intento = ""
+while intento != clave:
+    intento = input("clave: ")
+print("Acceso concedido")</code></pre></div></details></section>
+<section class="rv"><h2>Comprueba lo aprendido</h2><p>Con <code>nota = 90</code>, ¿qué imprime <code>notas.py</code>?</p><div class="q"><button class="opt">Excelencia</button><button class="opt" data-ok>Aprobado</button><button class="opt">Refuerzo</button><p id="fb" class="mt-2" aria-live="polite" data-ok="Correcto: 90 no es mayor que 90, pero sí es mayor que 60." data-no="Casi. Recuerda que la condición es nota &gt; 90, no nota &gt;= 90."></p></div></section>
+<section class="rv"><h2>Resumen</h2><ul class="ls"><li><code>if / else</code> decide entre dos caminos y <code>elif</code> permite más, revisando de arriba abajo.</li><li><code>=</code> asigna y <code>==</code> compara.</li><li><code>for</code> recorre una secuencia y <code>range</code> genera números sin incluir el final.</li><li><code>while</code> repite mientras la condición sea verdadera.</li><li><code>def</code> define una función y <code>return</code> entrega un valor, o varios.</li></ul><p class="mt-3">Para profundizar (opcional): <a href="https://docs.python.org/es/3/tutorial/controlflow.html" target="_blank" rel="noopener">tutorial oficial de Python sobre control de flujo</a>.</p></section>
+<div class="npw"><button id="np" class="np">No me presiones</button></div>
+<nav class="nx"><a href="clase_3.html">← Clase 3</a><a href="../index.html">Mapa</a><a href="clase_5.html">Clase 5 →</a></nav>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><script src="../assets/js/app.js"></script></body></html>

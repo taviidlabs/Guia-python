@@ -1,0 +1,68 @@
+<!doctype html><html lang="es" data-bs-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Clase 3 · Variables y datos</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;700&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../assets/css/estilo.css" rel="stylesheet"></head>
+<body class="t3" data-n="3" style="--acc:#facc15">
+<!-- 🕵️ ¿Mirando el código fuente? Pista de la clase 3: un círculo, 3.14. Y en toda la guía hay una serpiente: escribe «serpiente». -->
+<canvas id="stars" aria-hidden="true"></canvas><div id="pg"></div>
+<nav class="navbar fixed-top"><div class="container"><a class="navbar-brand" href="../index.html">◎ Misión Python</a><span class="rango" id="rango"></span></div></nav>
+<header class="container hero"><div class="big">03</div><h1>Variables y datos</h1><p class="lead">Aprende a guardar información en variables, a convertir sus tipos y a organizarla en listas, tuplas y diccionarios.</p></header>
+<main class="container sec">
+<section class="rv"><h2>Paso 1 · Variables: cajas con nombre</h2><p>Una <b>variable</b> es una caja con nombre donde guardas un valor. <code>caja1 = 2</code> guarda el 2 en la caja llamada <code>caja1</code>. El signo <code>=</code> <b>asigna</b>, no compara. Los nombres usan letras, números y guion bajo, sin espacios y sin empezar con número. Si guardas otro valor con el mismo nombre, la caja cambia de contenido.</p><div class="win" data-f="variables.py (primera parte)" data-o="5"><pre><code>caja1 = 2
+caja2 = 3
+caja_grande = caja1 + caja2
+print(caja_grande)</code></pre></div><p class="mt-3">Prueba tus propias cajas:</p><div id="cj"><input id="cn" class="mi" placeholder="nombre" aria-label="Nombre"> <input id="cv" class="mi" placeholder="valor" aria-label="Valor"> <button id="cg" class="mb">Guardar</button><p id="cm" class="hint"></p><div id="cb"></div></div><p class="note mt-3">Prueba tú: guarda <code>edad</code> con 20 y luego otra vez con 21.</p></section>
+<section class="rv"><h2>Paso 2 · Tipos de dato y conversión</h2><p>Cada valor tiene un tipo: <code>int</code> (enteros), <code>float</code> (decimales), <code>str</code> (texto) y <code>bool</code> (verdadero o falso). <code>input()</code> siempre devuelve texto, por eso se convierte: <code>int(...)</code>, <code>float(...)</code>, <code>str(...)</code>. Fíjate que <code>int(n1/n2)</code> descarta los decimales: 3.5 pasa a 3.</p><div class="win" data-f="clase_3/datos.py" data-o="ponga un numero ---&gt; 7&#10;ponga otro numero ---&gt; 2&#10;9&#10;5.0&#10;14.0&#10;3"><pre><code># numeros enteros -------&gt;int
+# numeros decimales ------&gt; float
+# cadenas de texto -------&gt;str
+# datos boolenas ---------&gt; bool
+
+n1=int(input("ponga un numero ---&gt; "))
+n2=int(input("ponga otro numero ---&gt; "))
+s=str(n1+n2)
+r=float(n1-n2)
+m=float(n1*n2)
+d=int(n1/n2)
+print(s)
+print(r)
+print(m)
+print(d)</code></pre></div><p class="note mt-3">Prueba tú: escribe 0 como segundo número. El error que verás se resuelve en la clase 6.</p></section>
+<section class="rv"><h2>Paso 3 · input y f-strings</h2><p>Una f-string lleva una <code>f</code> antes de las comillas y deja meter variables entre llaves: <code>{n1}</code>. Así el mensaje queda armado sin pegar textos a mano.</p><div class="win" data-f="variables.py (segunda parte)" data-o="ponga un numero ---&gt; 8&#10;ponga otro numero ---&gt; 2&#10;la suma de 8 + 2 es: 10&#10;la resta de 8 - 2 es: 6&#10;la multiplicacion de 8 * 2 es: 16&#10;la division de 8 / 2 es: 4.0"><pre><code>n1=int(input("ponga un numero ---&gt; "))
+n2=int(input("ponga otro numero ---&gt; "))
+s=n1+n2
+r=n1-n2
+m=n1*n2
+d=n1/n2
+print(f"la suma de {n1} + {n2} es:",s)
+print(f"la resta de {n1} - {n2} es:",r)
+print(f"la multiplicacion de {n1} * {n2} es:",m)
+print(f"la division de {n1} / {n2} es:",d)</code></pre></div><p class="note mt-3">Prueba tú: cambia los textos de los mensajes.</p></section>
+<section class="rv"><h2>Paso 4 · Fórmulas: el área del círculo</h2><p>Aquí el programa pide un radio decimal con <code>float(input())</code>. <code>PI</code> va en mayúsculas por convención: es un valor que no cambia. <code>**</code> es la potencia, así que <code>radio**2</code> es el radio al cuadrado.</p><div class="win" data-f="clase_3/ac.py" data-o="ponga el dato del radio: 2&#10;El area del circulo es: 12.5664"><pre><code>#Area del Circulo
+radio=float(input("ponga el dato del radio: "))
+PI=3.1416
+area=PI*(radio**2)
+print("El area del circulo es:",area)</code></pre></div><p class="note mt-3">Prueba tú: prueba con radio 10 y observa los decimales largos: la computadora guarda los decimales de forma aproximada, y es normal.</p></section>
+<section class="rv"><h2>Paso 5 · Listas</h2><p>Una lista guarda varios valores entre corchetes. Cada uno tiene una posición que empieza en 0, y se puede modificar.</p><div class="win" data-f="ltd.py (listas)" data-o="Listas&#10;[&#x27;Manzana&#x27;, &#x27;Naranja&#x27;, &#x27;Uva&#x27;]"><pre><code>print("Listas")
+#           0         1      2
+frutas=["Manzana","Banana","Uva"]
+frutas[1]="Naranja"
+print(frutas)</code></pre></div><p class="note mt-3">Prueba tú: cambia la posición 0 y vuelve a imprimir.</p></section>
+<section class="rv"><h2>Paso 6 · Tuplas</h2><p>Una tupla se parece a una lista pero va entre paréntesis y <b>no se puede modificar</b>. Si intentas <code>numeros[1] = 100</code>, Python da un error.</p><div class="win" data-f="ltd.py (tuplas)" data-o="Tuplas&#10;5"><pre><code>print("Tuplas")
+#        0 1  2 3 4
+numeros=(2,10,5,8,1)
+#  numeros[1]=100 ---------&gt; no se puede modificar
+print(numeros[2])</code></pre></div></section>
+<section class="rv"><h2>Paso 7 · Diccionarios</h2><span class="egg" title="">✦</span><p>Un diccionario guarda pares <code>clave: valor</code>. En vez de una posición, buscas por el nombre de la clave.</p><div class="win" data-f="ltd.py (diccionarios)" data-o="Python"><pre><code>persona={
+    "Nombre":"David",
+    "Apellido":"Torrez",
+    "Edad":28,
+    "lenguaje_de_programacion":"Python"
+}
+print(persona["lenguaje_de_programacion"])</code></pre></div><p class="note mt-3">Prueba tú: imprime el nombre y la edad de la persona.</p></section>
+<section class="rv"><h2>Practica</h2><details class="dp"><summary>Promedio de dos números</summary><div class="win" data-f="ej_promedio.py" data-o="a: 8&#10;b: 5&#10;El promedio es: 6.5"><pre><code>a = float(input("a: "))
+b = float(input("b: "))
+print("El promedio es:", (a + b) / 2)</code></pre></div></details></section>
+<section class="rv"><h2>Resumen</h2><ul class="ls"><li>Una variable es una caja con nombre; <code>=</code> asigna.</li><li>Los tipos básicos son <code>int</code>, <code>float</code>, <code>str</code> y <code>bool</code>, y se convierten con sus funciones.</li><li><code>input()</code> devuelve texto; las f-strings arman mensajes con variables.</li><li>Las listas se modifican, las tuplas no, y los diccionarios guardan pares clave-valor.</li></ul></section>
+<nav class="nx"><a href="clase_2.html">← Clase 2</a><a href="../index.html">Mapa</a><a href="clase_4.html">Clase 4 →</a></nav>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><script src="../assets/js/app.js"></script></body></html>

@@ -1,0 +1,53 @@
+<!doctype html><html lang="es" data-bs-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Clase 9 · Empaquetado y Manim</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;700&family=Unbounded:wght@700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../assets/css/estilo.css" rel="stylesheet"></head>
+<body class="t9" data-n="9" style="--acc:#f87171">
+<!-- 🕵️ ¿Mirando el código fuente? Pista de la clase 9: el texto de la animación felicita: felicidades. Y en toda la guía hay una serpiente: escribe «serpiente». -->
+<canvas id="stars" aria-hidden="true"></canvas><div id="pg"></div>
+<nav class="navbar fixed-top"><div class="container"><a class="navbar-brand" href="../index.html">◎ Misión Python</a><span class="rango" id="rango"></span></div></nav>
+<header class="container hero"><div class="big">09</div><h1>Empaquetado y Manim</h1><p class="lead">Convierte tu dashboard en un programa que se abre con doble clic y cierra el curso con una animación hecha con código.</p></header>
+<main class="container sec">
+<section class="rv"><h2>Paso 1 · Por qué empaquetar</h2><p>Para ejecutar tu dashboard hace falta tener Python y sus librerías instaladas. <b>Empaquetar</b> convierte el proyecto en un archivo <code>.exe</code> que se abre con doble clic, incluso en un computador sin Python. Usaremos <b>PyInstaller</b>.</p><p>¿Recuerdas <code>sys.frozen</code> y <code>sys.executable</code> de la clase 7? Ahora cobran sentido: el programa los usa para saber si corre como script o como .exe, y así buscar el JSON junto al ejecutable.</p></section>
+<section class="rv"><h2>Paso 2 · Instalar PyInstaller y las dependencias</h2><p>Primero se instala la herramienta y se comprueba. Después, las librerías que usa tu proyecto; <code>openpyxl</code> hace falta para que pandas pueda generar archivos <code>.xlsx</code>.</p><div class="win" data-f="terminal"><pre><code>pip install pyinstaller
+pyinstaller --version</code></pre></div><div class="win" data-f="terminal"><pre><code>pip install pandas matplotlib openpyxl</code></pre></div></section>
+<section class="rv"><h2>Paso 3 · Ordenar los archivos y conseguir el ícono</h2><p>Tu carpeta debe verse así antes de empaquetar. El ícono tiene que ser un archivo <b>.ico</b>, y estar en la misma carpeta que el <code>.py</code>; un PNG o JPG no sirve.</p><div class="win" data-f="estructura"><pre><code>📁 mi_proyecto/
+  ├── dashboard.py
+  ├── productos_minimarket.json
+  └── icono.ico</code></pre></div><p class="mt-3">Puedes descargar un ícono en <b>icon-icons.com</b>, un sitio con miles de íconos gratuitos en colecciones temáticas, donde eliges el tamaño y el formato antes de descargar. Elige el formato ICO y revisa la licencia de cada ícono antes de usarlo. Si solo lo tienes en PNG, conviértelo en <b>convertico.com</b>.</p></section>
+<section class="rv"><h2>Paso 4 · Ejecutar PyInstaller</h2><p>Marca y desmarca las opciones para armar el comando y mira qué cambia en el resultado.</p><div id="pi"><div class="tg2"><label class="mb2"><input type="checkbox" id="p1" checked> --onefile</label><label class="mb2"><input type="checkbox" id="p2" checked> --windowed</label><label class="mb2"><input type="checkbox" id="p3" checked> --icon=icono.ico</label></div><pre id="pc" class="py"></pre><ul class="ls" id="pn"></ul><div class="tg2"><button id="pg1" class="mb">▶ Ejecutar pyinstaller</button><button id="pg2" class="mb">Copiar el JSON junto al .exe</button></div><pre id="pt2" class="py"></pre></div></section>
+<section class="rv"><h2>Paso 5 · Encontrar el .exe</h2><p>PyInstaller crea carpetas por su cuenta (pulsa «Ejecutar» arriba para verlas): <code>build</code> guarda archivos temporales que puedes ignorar, <code>dist</code> contiene tu <code>.exe</code> y <code>dashboard.spec</code> es la configuración generada.</p></section>
+<section class="rv"><h2>Paso 6 · Copiar el JSON junto al .exe</h2><p>El <code>.exe</code> no lleva dentro el JSON ni el ícono. Copia el JSON a la carpeta que vas a entregar, junto al <code>.exe</code> (pulsa el segundo botón de arriba). Sin él, la aplicación no podrá cargar ni guardar datos.</p><table class="tb"><tr><th>Problema</th><th>Causa y solución</th></tr><tr><td>No se abre la ventana</td><td>Olvidaste <code>--windowed</code>: la consola se abre y se cierra rápido.</td></tr><tr><td>Error al cargar datos</td><td>El JSON no está en la misma carpeta que el .exe.</td></tr><tr><td><code>ModuleNotFoundError</code></td><td>Falta instalar alguna dependencia antes de empaquetar.</td></tr><tr><td>El ícono no aparece</td><td>Debe ser <code>.ico</code>, no PNG ni JPG.</td></tr><tr><td>El .exe tarda en abrir</td><td>Es normal con <code>--onefile</code>: descomprime archivos al iniciar.</td></tr></table>empaqueta tu dashboard y ábrelo en otro computador sin Python.</section>
+<section class="rv"><h2>Paso 7 · ¿Qué es Manim?</h2><p>Manim es una librería de Python para crear animaciones con código. La creó Grant Sanderson, de 3Blue1Brown, para sus videos de matemáticas. Hoy se usa la versión de la comunidad, <b>Manim Community</b>, más estable y mejor documentada. Se instala con <code>pip install manim</code>. Y si solo quieres probar, <b>try.manim.community</b> funciona en el navegador, sin instalar nada.</p></section>
+<section class="rv"><h2>Paso 8 · Antes de animar: ¿qué es una clase?</h2><p>Hasta ahora usaste funciones. Una <b>clase</b> es un molde para crear objetos que reúnen datos y comportamientos. Manim se construye con clases, así que aquí solo necesitas reconocer cuatro piezas:</p><table class="tb"><tr><td><code>class MiPrimeraAnimacion(Scene)</code></td><td>Crea tu clase y hereda todo lo de <code>Scene</code>, como <code>play()</code> y <code>wait()</code>.</td></tr><tr><td><code>def construct(self)</code></td><td>El método que Manim ejecuta para dibujar la escena.</td></tr><tr><td><code>self</code></td><td>«Esta misma escena».</td></tr><tr><td>método</td><td>Una función que vive dentro de una clase.</td></tr></table></section>
+<section class="rv"><h2>Paso 9 · Tu primera animación</h2><p>Primero se crean los objetos: un texto, un cuadrado azul y un círculo rojo. Luego se colocan (<code>to_edge(UP)</code> arriba, <code>shift(LEFT*2)</code> a la izquierda, <code>shift(RIGHT*2)</code> a la derecha). Después se animan con <code>self.play(...)</code>: <code>Write</code> escribe el texto, <code>Create</code> dibuja cada figura y <code>Transform</code> convierte el cuadrado en círculo. <code>self.wait(n)</code> pausa <code>n</code> segundos. En un archivo <code>.py</code> hace falta <code>from manim import *</code> al inicio. Mira cómo se ve:</p><div class="stage" id="mn"><div class="mt">Felicidades por terminar el curso</div><div class="mq" id="mq"></div><div class="mc"></div></div><button id="mr" class="mb mt-3">▶ Repetir</button><p class="hint">Es una réplica en CSS; el video real lo genera Manim.</p><div class="win" data-f="clase_9/mi_animacion.py"><pre><code>from manim import *
+#https://hub.gesis.mybinder.org/user/manimcommunity-jupyter_examples-vjdtopcp/notebooks/First%20Steps%20with%20Manim.ipynb
+
+class MiPrimeraAnimacion(Scene):
+    def construct(self):
+        texto=Text("Felicidades por terminar el curso",font_size=36)
+        cuadrado=Square(color=BLUE, fill_opacity=0.5)
+        circulo=Circle(color=RED,fill_opacity=0.8)
+        
+        texto.to_edge(UP)
+        cuadrado.shift(LEFT*2)
+        circulo.shift(RIGHT*2)
+        
+        self.play(Write(texto))
+        
+        self.play(Create(cuadrado))
+        self.wait(10)
+        
+        self.play(Create(circulo))
+        self.wait(5)
+        
+        self.play(Transform(cuadrado,circulo))
+        self.wait(15)
+# manim -pql mi_animacion.py MiPrimeraAnimacion -----&gt; vs code
+# %%manim -qm -v WARNING MiPrimeraAnimacion -------&gt; tryManim</code></pre></div><p class="note mt-3">Prueba tú: cambia los colores o los segundos de <code>wait</code>.</p></section>
+<section class="rv"><h2>Paso 10 · Ejecutarla</h2><p>En la terminal de VS Code, dentro de la carpeta del archivo, escribe el primer comando; <code>-p</code> abre el video al terminar y <code>-ql</code> usa calidad baja, que renderiza más rápido. En try.manim.community se usa la línea mágica del segundo. Manim guarda el video en una carpeta <code>media</code>.</p><div class="win" data-f="terminal"><pre><code>manim -pql mi_animacion.py MiPrimeraAnimacion</code></pre></div><div class="win" data-f="try.manim.community"><pre><code>%%manim -qm -v WARNING MiPrimeraAnimacion</code></pre></div></section>
+<section class="rv"><h2>Felicidades</h2><span class="egg" title="">✦</span><p>Terminaste el curso: pasaste de <code>print("Hola")</code> a un programa completo, con datos de internet, base de datos, un ejecutable propio y hasta una animación. Para seguir: crea tu propio proyecto, súbelo a GitHub y revisa la <a href="https://docs.manim.community" target="_blank" rel="noopener">documentación de Manim Community</a>.</p></section>
+<section class="rv"><h2>Resumen</h2><ul class="ls"><li><code>pyinstaller --onefile --windowed --icon=icono.ico archivo.py</code> convierte tu proyecto en un .exe.</li><li>El .exe aparece en <code>dist</code>, y el JSON debe copiarse junto a él.</li><li>El ícono debe ser <code>.ico</code>.</li><li>En Manim, una clase hereda de <code>Scene</code> y todo se escribe en <code>construct</code>.</li></ul></section>
+<nav class="nx"><a href="clase_8.html">← Clase 8</a><a href="../index.html">Mapa</a><span class="off">Fin del curso ✦</span></nav>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><script src="../assets/js/app.js"></script></body></html>

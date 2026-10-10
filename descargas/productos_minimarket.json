@@ -1,0 +1,127 @@
+[
+    {
+        "id": 1,
+        "title": "Arroz 1kg",
+        "price": 8.5
+    },
+    {
+        "id": 2,
+        "title": "Azúcar 1kg",
+        "price": 7.8
+    },
+    {
+        "id": 3,
+        "title": "Aceite Fino 900ml",
+        "price": 15.0
+    },
+    {
+        "id": 4,
+        "title": "Leche PIL 1L",
+        "price": 6.5
+    },
+    {
+        "id": 5,
+        "title": "Pan de molde",
+        "price": 9.0
+    },
+    {
+        "id": 6,
+        "title": "Huevos (maple 30 unidades)",
+        "price": 32.0
+    },
+    {
+        "id": 7,
+        "title": "Fideo 500g",
+        "price": 4.5
+    },
+    {
+        "id": 8,
+        "title": "Coca Cola 2L",
+        "price": 11.0
+    },
+    {
+        "id": 9,
+        "title": "Pepsi 2L",
+        "price": 10.5
+    },
+    {
+        "id": 10,
+        "title": "Galletas Oreo",
+        "price": 6.0
+    },
+    {
+        "id": 11,
+        "title": "Chocolate Sublime",
+        "price": 4.0
+    },
+    {
+        "id": 12,
+        "title": "Atún en lata",
+        "price": 100.0
+    },
+    {
+        "id": 13,
+        "title": "Mayonesa 500g",
+        "price": 45.0
+    },
+    {
+        "id": 15,
+        "title": "Sal 1kg",
+        "price": 3.5
+    },
+    {
+        "id": 16,
+        "title": "Café Nescafé 200g",
+        "price": 23.0
+    },
+    {
+        "id": 17,
+        "title": "Yogurt PIL 1L",
+        "price": 8.5
+    },
+    {
+        "id": 18,
+        "title": "Agua Embotellada 2L",
+        "price": 4.0
+    },
+    {
+        "id": 19,
+        "title": "Papas fritas bolsa",
+        "price": 7.5
+    },
+    {
+        "id": 20,
+        "title": "Detergente 1kg",
+        "price": 15.0
+    },
+    {
+        "id": 21,
+        "title": "Shampoo",
+        "price": 25.0
+    },
+    {
+        "id": 23,
+        "title": "Vino",
+        "price": 80.0
+    },
+    {
+        "id": 24,
+        "title": "Galletas",
+        "price": 5.0
+    },
+    {
+        "id": 25,
+        "title": "Gomitas",
+        "price": 1.5
+    },
+    {
+        "id": 26,
+        "title": "Maizena",
+        "price": 15.0
+    },
+    {
+        "id": 27,
+        "title": "Papas ",
+        "price": 200.0
+    }
+]
